@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Balaji S — Portfolio</title>
+<meta name="description" content="Balaji S, B.Sc. Computer Science student. AI & ML, Data Analytics, Software Development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fraunces:opsz,wght@9..144,400..600&family=Manrope:wght@400;500;600&family=Marcellus&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#05070c;--warm:#f1ece2;--gold:#c9a35d;--mute:rgba(241,236,226,.74);--line:rgba(201,163,93,.32);
+--serif:'Cormorant Garamond','Cormorant',Georgia,'Times New Roman',serif;--sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth;background:var(--ink);scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
+body{font:400 1rem/1.65 var(--sans);color:var(--warm);background:var(--ink);overflow-x:clip;-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+ul,ol{list-style:none}
+h2{font:500 clamp(2.4rem,9.5vw,4.4rem)/1.05 var(--serif);letter-spacing:-.005em;margin-bottom:1.4rem}
+h3{font:500 clamp(1.5rem,5.5vw,2rem)/1.2 var(--serif)}
+.lead{font-size:1.08rem}
+.dim{color:var(--mute)}
+dt{font:italic 500 1.15rem/1.3 var(--serif);color:var(--gold)}
+dd{color:var(--warm)}
+dl>div{padding:.9rem 0;border-top:1px solid var(--line)}
+dl{margin-top:1.2rem}
+main li{position:relative;padding-left:1.3rem;margin-top:.7rem;color:var(--mute)}
+main li::before{content:"";position:absolute;left:0;top:.8em;width:.6rem;height:1px;background:var(--gold)}
+
+/* sections + backgrounds */
+section{position:relative;overflow:clip}
+.bg{position:sticky;top:0;height:100svh;margin-bottom:-100svh;z-index:0;background:var(--ink)}
+.vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bg::after{content:"";position:absolute;inset:0;background:var(--shade,rgba(3,5,10,.5))}
+.screens{position:relative;z-index:1}
+.screen{min-height:100svh;padding:92px 28px 64px;display:flex;flex-direction:column;justify-content:center;scroll-snap-align:start;scroll-snap-stop:always}
+
+/* reveal */
+.js .c{opacity:0;transform:translateY(14px);transition:opacity 1.5s ease var(--d,0s),transform 1.5s ease var(--d,0s)}
+.js .c.in{opacity:1;transform:none}
+
+/* nav */
+#nav{position:fixed;z-index:30;top:max(14px,env(safe-area-inset-top));right:14px}
+.menu{
+ width:48px;height:48px;padding:0;display:grid;place-content:center;gap:5px;
+ color:#14161c;background:rgba(255,255,255,.34);border:1px solid rgba(20,22,28,.18);
+ border-radius:16px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 8px 22px rgba(0,0,0,.08);
+ backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+.menu span{display:block;width:19px;height:1.5px;background:currentColor;border-radius:99px;transition:transform .25s,opacity .25s}
+#nav.open .menu span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+#nav.open .menu span:nth-child(2){opacity:0}
+#nav.open .menu span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+#nav ol{display:none;position:absolute;right:0;top:54px;min-width:14rem;background:rgba(255,255,255,.72);border:1px solid rgba(20,22,28,.14);border-radius:18px;padding:.6rem 1.2rem;box-shadow:0 18px 40px rgba(0,0,0,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+#nav.open ol{display:block}
+#nav a{display:flex;gap:1rem;align-items:baseline;padding:.85rem 0;text-decoration:none;color:#34373d;font:500 .85rem var(--sans);letter-spacing:.12em;text-transform:uppercase}
+#nav a i{font:italic 500 1.05rem var(--serif);letter-spacing:0;color:var(--gold)}
+#nav a[aria-current=true]{color:var(--warm)}
+
+/* desktop side navigation */
+#side-nav{display:none}
+@media (min-width:900px){
+ #side-nav{position:fixed;display:block;z-index:25;left:2.8vw;top:50%;transform:translateY(-50%);width:10vw;min-width:155px}
+ #side-nav ol{display:grid;gap:1.05rem}
+ #side-nav a{display:grid;grid-template-columns:2rem 1fr;align-items:center;gap:.5rem;text-decoration:none;color:rgba(20,22,28,.52);font:500 .68rem/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;transition:color .25s,transform .25s}
+ #side-nav a i{font:italic 500 .88rem var(--serif);letter-spacing:0;color:#9a7740}
+ #side-nav a span{white-space:nowrap}
+ #side-nav a::after{content:"";position:absolute;left:0;width:0;height:1px;background:#9a7740;transition:width .25s}
+ #side-nav a:hover,#side-nav a[aria-current="true"]{color:#14161c;transform:translateX(3px)}
+ #side-nav a[aria-current="true"] i{color:#70531e}
+ #side-nav a[aria-current="true"] span{font-weight:600}
+ #nav{display:none}
+}
+
+/* intro */
+.intro{position:fixed;inset:0;z-index:50;display:grid;place-items:center;text-align:center;color:var(--warm);background:#03050b;overflow:clip;transition:opacity 1.6s ease,visibility 1.6s;cursor:pointer}
+.intro.gone{opacity:0;visibility:hidden;pointer-events:none}
+html.introing{overflow:hidden}
+.intro .in-c{position:relative;z-index:1}
+.intro h1{font:500 clamp(2.6rem,12vw,6rem)/1 var(--serif);letter-spacing:.1em;white-space:nowrap;margin-bottom:1.4rem;padding-left:.14em}
+.intro p{color:var(--mute);letter-spacing:.06em}
+.intro p+p{margin-top:.35rem;font:italic 400 1.15rem var(--serif);color:var(--gold)}
+
+/* home */
+#home{
+ background:
+   radial-gradient(circle at 82% 16%,rgba(201,163,93,.20),transparent 28%),
+   radial-gradient(circle at 14% 82%,rgba(255,255,255,.12),transparent 30%),
+   linear-gradient(135deg,#a9aa9c 0%,#b7b4a5 46%,#8f9185 100%);
+ color:#17191a;
+}
+#home::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.20;background-image:radial-gradient(rgba(20,22,28,.16) .55px,transparent .55px);background-size:5px 5px;mix-blend-mode:multiply}
+.portrait{height:52svh;margin:0 -28px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:45% 0;display:block;background:transparent}
+.screen.home{padding:0 28px 48px;justify-content:flex-start}
+.summary{padding-top:2rem;position:relative;z-index:2}
+.name{font:500 clamp(2rem,9vw,3.4rem)/1 var(--serif);letter-spacing:.08em;white-space:nowrap}
+.summary h2{font:italic 500 clamp(2rem,7.5vw,2.6rem)/1.15 var(--serif);color:#70531e;margin:1.3rem 0 1rem}
+.summary p{color:#282b31;max-width:40rem;font-size:1.1rem;line-height:1.7}
+.home-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.55rem}
+.home-actions a{
+ display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;
+ border:1px solid rgba(20,22,28,.22);border-radius:999px;
+ padding:.42rem .52rem .42rem .78rem;font-size:.73rem;letter-spacing:.08em;
+ text-transform:uppercase;color:#202329;
+ background:rgba(255,255,255,.30);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.72),0 8px 22px rgba(20,22,28,.07);
+ backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ transition:transform .25s ease,background .25s ease,box-shadow .25s ease;
+}
+.home-actions a.primary{background:rgba(255,255,255,.16);color:#202329;border-color:rgba(20,22,28,.18)}
+.home-actions a:hover{transform:translateY(-2px);background:rgba(255,255,255,.52);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 12px 28px rgba(20,22,28,.11)}
+.home-actions a.primary:hover{background:rgba(255,255,255,.30)}
+.home-actions .arrow{display:none}
+
+.home-signature{margin-top:1.2rem;font:italic 400 1rem var(--serif);color:#656871}
+
+/* per-section shade */
+#education{--shade:linear-gradient(90deg,rgba(3,5,10,.78),rgba(3,5,10,.6))}
+#internship{--shade:rgba(4,7,18,.62)}
+#projects{--shade:linear-gradient(90deg,rgba(3,4,8,.62),rgba(3,4,8,.35))}
+#info{--shade:linear-gradient(90deg,rgba(3,4,8,.55),rgba(3,4,8,.25))}
+#internship .screen{text-align:center;align-items:center}
+#internship ul{text-align:left;max-width:38rem}
+.role{font:italic 400 1.3rem var(--serif);color:var(--gold);margin:.1rem 0 .1rem}
+.job+.job{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.job li{font-size:.95em}
+.proj{margin-bottom:2.4rem}
+.proj+.proj{padding-top:2rem;border-top:1px solid var(--line)}
+.proj .when{font:italic 500 1.1rem var(--serif);color:var(--gold);margin-bottom:.3rem}
+.proj .tech{margin-top:.6rem;color:var(--mute)}
+.cont{display:none}
+.cont{font:italic 400 1.2rem var(--serif);color:var(--gold);margin-bottom:1.5rem}
+.links a{display:inline-block;text-decoration:none;border-bottom:1px solid var(--gold);padding:.2rem 0;word-break:break-all}
+.contact{margin-top:2rem;padding:1.4rem 1.5rem;border:1px solid var(--line);background:rgba(5,7,12,.34);border-radius:18px;backdrop-filter:blur(8px)}
+.contact h3{margin-bottom:.35rem}
+.contact p{color:var(--mute);font-size:.92rem;margin-bottom:1rem}
+.contact-form{display:grid;gap:.8rem}
+.contact-form label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.contact-form input,.contact-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:rgba(5,7,12,.5);color:var(--warm);padding:.72rem .8rem;font:400 .9rem var(--sans)}
+.contact-form textarea{min-height:7rem;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.contact-form button{justify-self:start;border:1px solid var(--gold);border-radius:999px;background:transparent;color:var(--warm);padding:.68rem 1.15rem;font:600 .78rem var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.contact-form button:hover{background:rgba(201,163,93,.12)}
+.contact-note{display:none;margin-top:.7rem;color:var(--gold)!important;font-size:.82rem!important}
+
+/* desktop */
+@media (min-width:900px){
+ html{scroll-snap-type:y mandatory}
+ body{font-size:clamp(.95rem,1.05vw,1.08rem)}
+ h2{font-size:clamp(2.4rem,4.4vw,4.4rem)}
+ section{height:100vh}
+ .bg{position:absolute;inset:0;height:auto;margin:0}
+ section{scroll-snap-align:start;scroll-snap-stop:always}
+ .screens{height:100%;display:grid;grid-template-columns:1fr 1fr;column-gap:5vw;align-items:center;padding:0 6vw 0 12vw}
+ .screen{display:contents;scroll-snap-align:none}
+ #nav{top:24px;right:24px;left:auto;transform:none}
+ .menu{display:grid}
+ #nav ol{display:none;position:absolute;right:0;top:58px;min-width:15rem;background:rgba(246,244,237,.82);border:1px solid rgba(20,22,28,.14);border-radius:18px;padding:.65rem 1.25rem;box-shadow:0 18px 40px rgba(0,0,0,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+ #nav.open ol{display:block}
+ #nav a{padding:.82rem 0;font-size:.74rem;transition:color .25s}
+ #nav a{position:relative}
+ #nav a[aria-current=true]{color:#14161c}
+ #home .screens{padding:0;grid-template-columns:12vw minmax(0,40vw) minmax(0,1fr);align-items:end}
+ .portrait{grid-column:2;height:88vh;margin:0;overflow:visible;border-radius:0;align-items:flex-end}
+ .portrait img{width:100%;height:100%;object-fit:contain;object-position:50% 100%;display:block;background:transparent}
+ .summary{grid-column:3;align-self:center;padding:0 5vw 0 2vw;position:relative;z-index:2}
+ .name{font-size:clamp(2.2rem,4.6vw,5rem)}
+ .summary h2{font-size:clamp(2rem,3.5vw,3.6rem)}
+ .summary p{font-size:clamp(1.05rem,1.4vw,1.45rem)}
+ .screen.home{padding:0}
+ #internship .screens{grid-template-columns:minmax(0,44rem);justify-content:center;padding:0 6vw 0 12vw}
+ #internship .screen{align-items:normal}
+ #info .screens{grid-template-columns:minmax(0,34rem) minmax(0,30rem);column-gap:6vw;justify-content:center;padding:0 5vw 0 12vw}
+ #info .contact{margin-top:0}
+ #projects .screens{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:3vw;row-gap:2.2rem;align-content:center;padding:0 5vw 0 12vw}
+ #projects h2{grid-column:1 / -1;margin:0}
+ .proj{align-self:start;margin:0;padding:1.4rem 0 0;border-top:1px solid var(--line)}
+ .proj+.proj{padding-top:1.4rem}
+ .proj h3{font-size:clamp(1.3rem,1.9vw,1.9rem)}
+}
+@media (max-width:899px) and (min-width:600px){.screen{padding-left:12vw;padding-right:12vw}.portrait{margin:0 -12vw}}
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .js .c{opacity:1;transform:none;transition:none}
+ *{transition-duration:.01s!important}
+}
+/* display type: one face per section */
+.intro h1,.name,.summary h2{font-family:'Bodoni Moda','Didot',var(--serif)}
+#education :is(h2,h3){font-family:'Playfair Display','Georgia',serif}
+#internship :is(h2,h3){font-family:'Cormorant Garamond','Georgia',serif}
+#projects :is(h2,h3){font-family:'Fraunces','Georgia',serif;letter-spacing:-.01em}
+#info h2{font-family:'Marcellus','Georgia',serif;font-weight:400}
+</style>
+<script>document.documentElement.classList.add('js','introing')</script>
+</head>
+<body>
+
+<div class="intro" id="intro">
+ <video class="vid" src="assets/intro.mp4" poster="assets/intro.jpg" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+ <div class="in-c">
+  <h1>BALAJI S</h1>
+  <p>B.Sc. Computer Science Student</p>
+  <p>AI &amp; ML, Data Analytics, Software Development</p>
+ </div>
+</div>
+
+<nav id="side-nav" aria-label="Portfolio sections">
+ <ol>
+  <li><a href="#home" data-section="home"><i>01</i><span>Professional Summary</span></a></li>
+  <li><a href="#education" data-section="education"><i>02</i><span>Education</span></a></li>
+  <li><a href="#internship" data-section="internship"><i>03</i><span>Internship</span></a></li>
+  <li><a href="#projects" data-section="projects"><i>04</i><span>Projects</span></a></li>
+  <li><a href="#info" data-section="info"><i>05</i><span>Info</span></a></li>
+ </ol>
+</nav>
+
+<nav id="nav" aria-label="Sections">
+ <button class="menu" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation"><span></span><span></span><span></span></button>
+ <ol id="navlist">
+  <li><a href="#home"><i>01</i>Home</a></li>
+  <li><a href="#education"><i>02</i>Education</a></li>
+  <li><a href="#internship"><i>03</i>Internship</a></li>
+  <li><a href="#projects"><i>04</i>Projects</a></li>
+  <li><a href="#info"><i>05</i>Info</a></li>
+ </ol>
+</nav>
+
+<main>
+<!-- HOME (intro + summary) -->
+<section id="home" aria-label="Home">
+ <div class="screens">
+  <div class="screen home">
+   <figure class="portrait" id="portrait"><img src="assets/portrait_transparent.png" alt="Balaji S in a dark blazer and white shirt, facing the camera" width="1599" height="902"></figure>
+   <div class="summary c">
+    <div class="name">BALAJI S</div>
+    <h2>Professional Summary</h2>
+    <p>B.Sc. Computer Science student interested in AI &amp; ML, Data Analytics, and Software Development. Focused on learning new technologies, building practical projects, and improving technical skills.</p>
+    <div class="home-actions">
+     <a class="primary" href="#projects"><span>View Projects</span><span class="arrow">↗</span></a>
+     <a href="#info"><span>Contact Me</span><span class="arrow">→</span></a>
+    </div>
+    <div class="home-signature">Building, learning &amp; creating — one project at a time.</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- EDUCATION + SKILLS -->
+<section id="education" aria-label="Education and technical skills">
+ <div class="bg"><video class="vid" data-src="assets/education.mp4" poster="assets/education.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
+ <div class="screens">
+  <div class="screen">
+   <div class="c">
+    <h2>Education</h2>
+    <p class="lead">B.Sc. Computer Science</p>
+    <p>Jamal Mohamed College, Trichy, Tamil Nadu</p>
+    <p class="dim">June 2024 – Present</p>
+    <p class="dim">Expected graduation: June 2027</p>
+    <dl>
+     <div><dt>Core skills</dt><dd>Data Structures, Algorithms, Computer Architecture, Operating Systems, Database Management</dd></div>
+     <div><dt>CGPA</dt><dd>7.05 (up to 4th semester)</dd></div>
+    </dl>
+   </div>
+  </div>
+  <div class="screen">
+   <div class="c" style="--d:.25s">
+    <h2>Technical Skills</h2>
+    <dl>
+     <div><dt>Programming languages</dt><dd>Python, Kotlin, JavaScript, Object-Oriented Programming</dd></div>
+     <div><dt>Web development</dt><dd>HTML, CSS, JavaScript, React</dd></div>
+     <div><dt>AI &amp; automation</dt><dd>OpenCV (Face Recognition), Artificial Intelligence (AI) Content Generation, UiPath Robotic Process Automation (RPA)</dd></div>
+    </dl>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- INTERNSHIP -->
+<section id="internship" aria-label="Internship experience">
+ <div class="bg"><video class="vid" data-src="assets/internship.mp4" poster="assets/internship.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
+ <div class="screens">
+  <div class="screen">
+   <div class="c">
+    <h2>Internship Experience</h2>
+    <div class="job">
+     <h3>VDart</h3>
+     <p class="role">AI/ML Intern</p>
+     <p class="dim">May 2026 – June 2026</p>
+     <ul>
+      <li>Developed an AI-powered caption and hook generation tool for automated content creation.</li>
+      <li>Collaborated on AI-focused project development, testing, and problem-solving in a live team environment.</li>
+     </ul>
+    </div>
+    <div class="job">
+     <h3>Skywin IT Academy</h3>
+     <p class="role">RPA Intern</p>
+     <ul>
+      <li>Developed UiPath RPA workflows to automate data generation and reduce manual effort.</li>
+      <li>Automated data creation, processing, and validation, improving accuracy and workflow efficiency.</li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" aria-label="Projects">
+ <div class="bg"><video class="vid" data-src="assets/projects.mp4" poster="assets/projects.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
+ <div class="screens">
+  <div class="screen">
+   <h2 class="c">Projects</h2>
+   <article class="proj c">
+    <p class="when">Project 01 · September 2026</p>
+    <h3>Healthcare Website with Chatbot &amp; Appointment Booking</h3>
+    <p class="tech">Technologies: HTML, CSS, JavaScript, React</p>
+    <ul>
+     <li>Engineered a healthcare website with a health-related chatbot to handle user queries in real time.</li>
+     <li>Automated the appointment scheduling process with an integrated booking system.</li>
+    </ul>
+   </article>
+  </div>
+  <div class="screen">
+   <p class="cont c">Projects, continued</p>
+   <article class="proj c" style="--d:.8s">
+    <p class="when">Project 02 · August 2026</p>
+    <h3>AI Face Recognition Attendance System</h3>
+    <p class="tech">Technologies: Python, OpenCV</p>
+    <ul>
+     <li>Engineered an AI face recognition system using Python and OpenCV with real-time face detection to identify registered employees.</li>
+     <li>Automated attendance logging, eliminating manual entry for daily check-ins.</li>
+    </ul>
+   </article>
+   <article class="proj c" style="--d:1.6s">
+    <p class="when">Project 03 · April 2026</p>
+    <h3>Automated Data Generation &amp; Validation using UiPath</h3>
+    <p class="tech">Location: Trichy, Tamil Nadu</p>
+    <ul>
+     <li>Engineered a Robotic Process Automation (RPA) workflow in UiPath to generate unique, rule-based data entries at scale.</li>
+     <li>Automated validation of generated data against predefined test criteria, reducing manual review effort.</li>
+    </ul>
+   </article>
+  </div>
+ </div>
+</section>
+
+<!-- ADDITIONAL INFORMATION -->
+<section id="info" aria-label="Additional information">
+ <div class="bg"><canvas class="vid" id="flow" aria-hidden="true"></canvas></div>
+ <div class="screens">
+  <div class="screen">
+   <div class="c">
+    <h2>Additional Information</h2>
+    <dl>
+     <div><dt>Languages</dt><dd>Tamil, English</dd></div>
+     <div><dt>Availability</dt><dd>Immediately Joiner</dd></div>
+     <div class="links"><dt>LinkedIn</dt><dd><a href="https://linkedin.com/in/balaji-s823a46409" target="_blank" rel="noopener">linkedin.com/in/balaji-s823a46409</a></dd></div>
+     <div class="links"><dt>GitHub</dt><dd><a href="https://github.com/balajisekar323-dev" target="_blank" rel="noopener">github.com/balajisekar323-dev</a></dd></div>
+     <div class="links"><dt>Email</dt><dd><a href="mailto:balajisekar323@gmail.com">balajisekar323@gmail.com</a></dd></div>
+    </dl>
+   </div>
+  </div>
+  <div class="screen">
+   <div class="contact c" style="--d:.25s">
+    <h3>Recruitment / Contact</h3>
+    <p>For recruitment opportunities or professional enquiries, send a message. It will be delivered to my email.</p>
+    <form class="contact-form" action="https://formsubmit.co/balajisekar323@gmail.com" method="POST" target="contact-submit-frame">
+     <input type="hidden" name="_subject" value="Portfolio Recruitment / Contact Message">
+     <input type="hidden" name="_template" value="table">
+     <input type="hidden" name="_captcha" value="false">
+     <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+     <label for="contact-name">Name</label>
+     <input id="contact-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+     <label for="contact-email">Email</label>
+     <input id="contact-email" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
+     <label for="contact-message">Message</label>
+     <textarea id="contact-message" name="message" placeholder="Recruitment opportunity or message..." required></textarea>
+     <button type="submit">Send message</button>
+     <p class="contact-note" id="contact-note" role="status">Your message is being sent to my email.</p>
+    </form>
+    <iframe name="contact-submit-frame" title="Contact form submission" style="display:none"></iframe>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<script>
+(()=>{
+const $=(s,r=document)=>[...r.querySelectorAll(s)];
+const desk=matchMedia('(min-width:900px)');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* lazy video: only the visible section plays; far videos are unloaded to free memory */
+const vio=new IntersectionObserver(es=>es.forEach(e=>{
+ const v=e.target;
+ if(e.isIntersecting){
+  if(v.dataset.src&&!v.getAttribute('src'))v.src=v.dataset.src;
+  if(!reduce)v.play().catch(()=>{});
+ }else{
+  v.pause();
+  if(v.dataset.src&&v.getAttribute('src')){v.removeAttribute('src');v.load()}
+ }
+}),{rootMargin:'40% 0px'});
+$('video[data-src]').forEach(v=>{ if(reduce)v.pause(); vio.observe(v); });
+
+/* flowing light (replaces the last video): light canvas, ~30fps, runs only when visible */
+(()=>{
+ const c=document.getElementById('flow'),x=c.getContext('2d');
+ const cols=['120,150,255','150,110,255','90,190,255'],N=innerWidth<900?70:130;
+ let W,H,ps=[],on=false,last=0,t=0;
+ const size=()=>{const d=Math.min(devicePixelRatio||1,1.5);W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);x.fillStyle='#03040a';x.fillRect(0,0,W,H)};
+ const mk=init=>({x:init?Math.random()*W:-10,o:(Math.random()-.5)*H*.8,ph:Math.random()*6.28,am:8+Math.random()*26,v:.7+Math.random()*1.5,a:.45+Math.random()*.5,c:cols[(Math.random()*3)|0]});
+ const pos=p=>[p.x,H*.42+p.o*(1-.8*p.x/W)+Math.sin(p.x*.006+p.ph+t)*p.am*(1-.5*p.x/W)];
+ const step=()=>{
+  x.fillStyle='rgba(3,4,10,.07)';x.fillRect(0,0,W,H);
+  x.globalCompositeOperation='lighter';t+=.006;
+  for(const p of ps){const [a,b]=pos(p);p.x+=p.v;const [q,r]=pos(p);
+   x.strokeStyle='rgba('+p.c+','+p.a+')';x.lineWidth=1.6;x.beginPath();x.moveTo(a,b);x.lineTo(q,r);x.stroke();
+   if(p.x>W+10)Object.assign(p,mk(false))}
+  x.globalCompositeOperation='source-over';
+ };
+ const loop=ts=>{if(!on)return;requestAnimationFrame(loop);if(ts-last<33)return;last=ts;step()};
+ size();for(let i=0;i<N;i++)ps.push(mk(true));
+ for(let i=0;i<160;i++)step();
+ if(reduce)return;
+ let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(size,200)});
+ new IntersectionObserver(es=>es.forEach(e=>{const v=e.isIntersecting&&!document.hidden;if(v&&!on){on=true;requestAnimationFrame(loop)}else if(!v)on=false}),{rootMargin:'20% 0px'}).observe(c);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)on=false});
+})();
+
+/* reveal */
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target)}}),{threshold:.25});
+
+/* intro: plays once on entering the site, then is removed */
+const intro=document.getElementById('intro'),iv=intro.querySelector('video');
+let introDone=false,pActive=false;
+const setLight=()=>document.body.classList.toggle('light',desk.matches&&pActive&&introDone);
+const finish=()=>{
+ if(introDone)return; introDone=true;
+ document.documentElement.classList.remove('introing');
+ intro.classList.add('gone'); setLight();
+ $('.c').forEach(el=>rio.observe(el));
+ setTimeout(()=>{iv.pause();iv.removeAttribute('src');iv.load();intro.remove()},1800);
+};
+if(reduce){iv.pause();finish()}else{setTimeout(finish,5200);intro.addEventListener('click',finish)}
+const endIntro=finish;
+
+/* active nav */
+const links=$('#nav a');
+const sio=new IntersectionObserver(es=>es.forEach(e=>{
+ if(!e.isIntersecting)return;
+ links.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id));
+ if(e.target.id!=='home')endIntro();
+}),{rootMargin:'-50% 0px -50% 0px'});
+$('section').forEach(s=>sio.observe(s));
+new IntersectionObserver(es=>es.forEach(e=>{pActive=e.isIntersecting;setLight()}),{rootMargin:'-50% 0px -50% 0px'}).observe(document.getElementById('portrait'));
+
+/* nav: mobile menu */
+const nav=document.getElementById('nav'),btn=nav.querySelector('.menu');
+const close=()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false')};
+btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+links.forEach(a=>a.addEventListener('click',()=>{close();endIntro()}));
+const contactForm=document.querySelector('.contact-form'),contactNote=document.getElementById('contact-note');
+contactForm?.addEventListener('submit',()=>{contactNote.style.display='block';});
+addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+
+})();
+</script>
+
+<script>
+(function(){
+ const links=[...document.querySelectorAll('#side-nav a')];
+ const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+ const setActive=id=>links.forEach(a=>a.setAttribute('aria-current',a.dataset.section===id?'true':'false'));
+ if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(entries=>{
+   entries.forEach(e=>{if(e.isIntersecting)setActive(e.target.id);});
+  },{threshold:.55});
+  sections.forEach(s=>io.observe(s));
+ }
+ setActive(location.hash ? location.hash.slice(1) : 'home');
+})();
+</script>
+</body>
+</html>
